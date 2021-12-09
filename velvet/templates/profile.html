@@ -1,0 +1,114 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block script %}<script src="{% static 'javascripts/profile.js' %}"></script>{% endblock %}
+
+{% block body %}
+<div id="profile-div">
+        <div class="row g-0">
+          <div class="col-md-3">
+            <img src="{{ profile_user.avatar.url }}" alt="Profile picture" class="img-thumbnail" width="70%"><br>
+            <h5 class="card-title" style="font-weight: bold; color: darkturquoise; text-align: center;">{{ profile_user.username | title }}</h5>
+            <br><br>
+            <div id="personal-info">
+                <p class="card-text"><strong>Full name: </strong> {{ profile_user.first_name }} {{ profile_user.last_name }}</p>
+                <p class="card-text"><strong>Email: </strong> {{ profile_user.email }}</p>
+                <p class="card-text"><strong>Joined date: </strong>{{ profile_user.date_joined | date:"M d, Y" }}</p>
+                <p class="card-text"><strong>Phone: </strong> {{ profile_user.phone }}</p>
+                <p class="card-text"><strong>Address: </strong> {{ profile_user.address }}</p>
+                <a id="up_pic" data-bs-toggle="modal" data-bs-target="#up_profile-pic">
+                  Edit your profile
+                </a>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <div class="card-body">
+              <div id="profile-btn">
+                <button id="cart-button" class="profile-btn-top"><img src="{% static 'images/cart2.png' %}" alt="icon" width="30px"> Your cart</button>
+                <button id="coupon-button" class="profile-btn-top"><img src="{% static 'images/coupon.png' %}" alt="icon" width="30px"> Your coupons</button>
+                <button id="processing-button" class="profile-btn-top"><img src="{% static 'images/courier.png' %}" alt="icon" width="30px"> Processing orders</button>
+                <button id="completed-button" class="profile-btn-top"><img src="{% static 'images/confirmation.png' %}" alt="icon" width="30px"> Completed orders</button>
+                <button id="appointment-button" class="profile-btn-top"><img src="{% static 'images/calendar.png' %}" alt="icon" width="30px"> Appointment</button>
+              </div>
+              <br><br>
+
+              <div id="cart-element" class="profile-element">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Item</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Unit price</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cart-list"></tbody>
+                </table><br>
+                <div style="text-align: right; margin-right: 50px;">
+                  <strong>Bill total:  $ <span id="cart-total"></span></strong>
+                </div>
+
+                <div style="position: fixed; bottom: 20px; padding: 10px; width: 74%;">
+                  <button class="btn-proceed" style="width: 98%; background-color: mintcream; font-size: large; font-weight: bold;">Proceed Order</button>
+                </div>
+              </div>
+            
+
+            <div id="coupon-element" class="profile-element"></div>
+
+            <div id="orders-element" class="profile-element">
+                <table class="table" id="list-orders">
+                </table>
+                <br><br><hr><br>
+                <p><strong style="font-size: large;">Order's details </strong><span><small style="color: grey;"> (Select order to see details)</small></span></p>
+                <table class="table" id="order">
+                </table>
+            </div>
+
+            <div id="appointment-element" class="profile-element"></div>
+              <table class="table" id="list-appointments">
+              </table>
+          </div>
+        </div>
+
+    </div>
+
+<!-- Upload profile picture Modal -->
+<div class="modal fade" id="up_profile-pic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+           <form action="" method="POST" enctype="multipart/form-data">
+             {% csrf_token %}
+             <p class="card-text"><strong>Full name: </strong> {{ profile_user.first_name }} {{ profile_user.last_name }}</p>
+             <p class="card-text"><strong>Email: </strong> {{ profile_user.email }}</p>
+             <p class="card-text"><strong>Joined date: </strong>{{ profile_user.date_joined | date:"M d, Y" }}</p>
+           <div class="mb-3">
+                <label for="1" class="form-label">Phone number</label>
+                <input type="text" class="form-control" name="1" value="{{profile_user.phone}}">
+              </div>
+              <div class="mb-3">
+                <label for="2" class="form-label">Address</label>
+                <textarea class="form-control" name="2" rows="4">{{profile_user.address}}</textarea>
+              </div>
+              <div class="mb-3">
+                <label for="pic" class="form-label">Upload your profile picture</label>
+                <input class="form-control" type="file" name="pic">
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-success" name="save-profile">Save</button>
+                <button class="btn btn-success" data-bs-dismiss="modal">Cancel</button>
+              </div>
+           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!----->
+
+{% endblock %}

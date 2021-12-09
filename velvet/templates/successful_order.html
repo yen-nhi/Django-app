@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Order{% endblock %}
+{% block style %}
+<style>
+body{
+    background-color: rgb(215, 233, 240);
+}
+.successful{
+    background-color: white;
+    margin: 30px;
+    padding: 20px;
+    text-align: center;
+    color: darkturquoise;
+    border: darkturquoise dashed 2px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.successful button{
+    border: darkturquoise solid 2px; 
+    background-color: mintcream; 
+    padding: 10px;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="successful">
+    <h5>Your order has been sent successfully.</h5><br>
+    <p>You can track your order by order ID: {{ order_id }}</p>
+    <p>Please check your email inbox for the Confirmation.</p>
+    <br>
+    <button><a href="{% url 'shop' %}">Continue shopping</a></button>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}VET{% endblock %}
+
+{% block script %}
+    <script src="{% static 'javascripts/find_vet.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div id="choose-location">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="city" style="font-weight: bold">Your location  </label>
+        <select name="city" id="city">
+            <option selected value="0">Select City</option>
+            {% for city in cities %}
+            <option value="{{ city.id }}">{{ city.city }}</option>
+            {% endfor %}
+        </select>
+        <select name="district" id="district" placeholder="District">
+            <option selected value="0">Select District</option>
+            <div id="other-options"></div>
+        </select>
+        
+        <span id="search-vet"><img src="{% static 'images/loupe.svg' %}" alt="" width="25px"></span>
+    </form>
+</div>
+
+<iframe id="vet-map" src="{{ src }}" frameborder="0" width="100%" height="700" allowfullscreen></iframe>
+{% endblock %}

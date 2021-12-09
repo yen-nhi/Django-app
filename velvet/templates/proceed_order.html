@@ -1,0 +1,107 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Order{% endblock %}
+
+{% block style %}
+<style>
+    #proceed-element{
+        padding: 100px;
+        padding-top: 20px;
+    }
+    #proceed-form .btn{
+        border: turquoise solid 2px;
+        color: darkturquoise;
+        width: 22%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #proceed-form .btn:hover{
+        background-color: mintcream;
+    }
+    #proceed-form{
+        text-align: center;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .bank{
+        margin-left: 100px;
+    }
+    input{
+        margin: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block script %}<script src="{% static 'javascripts/proceed_order.js' %}"></script>{% endblock %}
+
+{% block body %}
+<div id="proceed-element">
+    <div id="order-details">
+        <h5>Order details</h5>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Unit price</th>
+            <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody id="order-list">
+            {% for item in items %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.item.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.item.price }}</td>
+                <td>{% widthratio item.item.price 1 item.quantity %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+        <div style="text-align: right;">
+        <strong>Bill total:  $ <span>{{ bill_amount }}</span></strong>
+        </div>
+    </div>
+    <br><br><hr><br>
+    <h5>* Please fill these infomation</h5>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% if not user.is_authenticated %}
+        <input class="form-control" name="reciever" type="text" placeholder="Reciever" required>
+        <input class="form-control" name="email" type="email" placeholder="Email" required>
+        <input class="form-control" name="phone" type="text" placeholder="Phone number" required>
+        <input class="form-control" name="address" type="text" placeholder="Address" required>
+        {% endif %}
+    <br>
+    <div id="bank-info">
+    <p>To finish ordering, please pay the bill by transfering the amount to our bank account at:</p>
+    {% for i in accounts %}
+        <p class="bank"><strong>{{ i.bank }}</strong></p>
+        <p class="bank">Account's owner: <strong>{{ i.name }}</strong></p>
+        <p class="bank">Account number: <strong>{{ i.number }}</strong></p>
+    {% endfor %}
+    
+    <p>We will send you confirmation email when we recieve the amount.</p>
+    <p>If you don't transfer, after 3 days from the day of order, we will cancel the order. </p>
+    <p>If you have transfered, after 3 days from the day of order, you still have not recieved any confirmation email, please contact us.</p>
+    <p>After we recieve your payment, the package will be sent to courier within 2 days.</p>
+    <p>Time for shipping depends on the courier but not more than 3 days.</p>
+    <p style="color: darkturquoise; font-weight: bold;">Please do not refesh the page while taking ordering procced.</p>
+    <p>Thank you for choosing us!</p>
+    </div>
+</div><br><br>
+
+    <div id="proceed-form">
+        {% if user.is_authenticated %}
+            <a href="{% url 'profile' %}" class="btn">Go back to cart</a>
+        {% else %}
+            <a href="{% url 'anonymous_cart' %}" class="btn">Go back to cart</a>
+        {% endif %}
+        <button type="submit" class="btn">Confirm Order</button>
+    </div>
+</form>
+
+{% endblock %}

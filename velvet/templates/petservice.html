@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Service{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block body %}
+<div id="services">
+    <div class="card-group">
+
+        <div class="card">
+          <img src="{% static 'images/pet-transportation.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Transportation</h5>
+          </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/istockphoto-1199449447-612x612.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Spa</h5>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/GettyImages-1246207272.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Walk</h5>
+            </div>
+        </div>
+        <div class="card">
+            <img src="{% static 'images/iStock_000048614124_Large 2.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Hotel</h5>
+            </div>
+        </div>
+
+    </div> 
+</div>
+
+<div id="booking">
+  <h4>Let us know what you need!</h4>
+  <h5>Make an appointment for the best services. Please fill the form.</h5>
+  <small>* Please note that reversation shoul be made at least 1 day in advance. Thank you.</small><br><br>
+  <form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <br>
+    <label for="date-row" class="form-label">Select date & time:</label>
+    <div class="form-group" id="date-row">
+      <div class="row">
+        <div class="col">
+          <input type="text"  class="datepicker form-control" name="datetime_from" placeholder="From">
+        </div>
+        <div class="col">
+          <input type="text" class="datepicker form-control" name="datetime_to" placeholder="To">
+        </div>
+      </div>        	
+  </div>
+
+    <div id="reverse-button">
+      <button type="submit" class="btn btn-info">Reserve</button>
+    </div>
+  </form>
+
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+      flatpickr(".datepicker", {
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",});
+  </script>
+
+</div>
+{% endblock %}

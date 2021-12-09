@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block script %}
+<script></script>
+{% endblock %}
+
+
+{% block body %}
+<div class="card mb-3 product">
+    <div class="row g-0">
+      <div class="col-md-4" id="product-image">
+        <img src="{{ image.image.url }}" alt="" width="100%">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title" id="product-name">{{ item.name }}</h5>
+          <p class="card-text" id="product-price">Price: $ {{ item.price }}</p>
+          <p class="card-text" id="product-description">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<form action="" method="POST" style="position:relative; padding: 30px;">
+    {% csrf_token %}
+    <label for="score" style="color: gray; margin-right: 30px;">Giving score from 1 to 10: </label>
+    <input type="number" name="score" min="1" max="10" style="outline: none; border-radius: 5px; border: turquoise solid 2px; padding: 10px;"><br><br>
+    <div class="input-group">
+      <textarea class="form-control" name="review-message" rows="4" aria-label="With textarea" placeholder="Write your comment here."></textarea>
+      <span class="input-group-text" style="background-color: mintcream; color: darkturquoise;"><button type="submit" style="border: none; background-color: mintcream;"><img src="{% static 'images/send.svg' %}" alt="icon" width="30px"></button></span>
+    </div>
+</form>
+{% endblock %}

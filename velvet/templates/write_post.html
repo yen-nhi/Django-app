@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Write post{% endblock %}
+
+{% block body %}
+<div id="write_post">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <input type=submit class="btn btn-info" value="Submit">
+    </form>
+</div>
+{% endblock %}

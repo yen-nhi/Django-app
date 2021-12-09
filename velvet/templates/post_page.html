@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Post{% endblock %}
+{% block script %}
+<script src="{% static 'javascripts/article.js' %}"></script>
+<script>var post_id = parseInt("{{ post.id }}")</script>
+{% endblock %}
+
+{% block body %}
+{% if post.head_image %}
+<div class="head-image">
+    <img src="{{ post.head_image.url }}" alt="" width="100%">
+</div>
+{% endif %}
+
+<div class="content">
+    <h2>{{ post.title }}</h2><br>
+    <p class="quote"></p>
+    <p class="paragraph">{{ post.body | safe }}</p>
+    <p class="author"><strong >{{ post.user.username | title }} </strong>(<small class="time">{{ post.time }}</small>)</p>
+</div>
+<hr style="margin: 20px;">
+<div id="comments">
+    <form action="" method="POST" id="comment-form">
+        <div class="input-group">
+            <textarea class="form-control" id="message" aria-label="With textarea" placeholder="Write your comment here."></textarea>
+            <span class="input-group-text" id="comment-btn" style="background-color: mintcream; color: darkturquoise;"><img src="{% static 'images/send.svg' %}" alt="icon" width="30px"></span>
+        </div>
+    </form><br>
+    <div id="discussions" style="padding: 30px;">
+        <h5 style="color: darkturquoise;">People's discussions</h5>
+        <br>
+        <ul class="list-group" id="comments-list">
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Service{% endblock %}
+
+
+{% block style %}
+<style>
+    .successful{
+        margin: 30px;
+        padding: 20px;
+        text-align: center;
+        color: darkturquoise;
+        border: darkturquoise dashed 2px;
+    }
+    .successful button{
+        border: darkturquoise solid 2px; 
+        background-color: mintcream; 
+        padding: 10px;
+    }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="successful">
+    <h5>Your appointment has been sent successfully.</h5><br>
+    <p>For your reference, appointment ID: {{ appmt }}</p>
+    <p>We will confirm by email within one day.</p>
+    <p>For more request, please call us<strong> +84 1234 567 890</strong> for the fastest service.</p>
+    <br>
+    <button><a href="{% url 'index' %}">Go to home page</a></button>
+</div>
+{% endblock %}

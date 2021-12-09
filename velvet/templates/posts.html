@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Posts{% endblock %}
+{% block script %}
+<script src="{% static 'javascripts/posts.js' %}"></script>
+<script>var type = "{{ type }}"</script>
+{% endblock %}
+{% block body %}
+<div id="posts" class="content"></div>
+<div id="articles" class="content"></div>
+{% endblock %}
