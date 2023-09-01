@@ -4,12 +4,10 @@ dj-database-url==0.5.0
 Django==3.1.7
 django-ckeditor==6.1.0
 django-filter==2.4.0
-django-heroku==0.3.1
 django-js-asset==1.2.2
 jellyfish==0.8.2
 lib50==2.0.9
 markdown2==2.4.0
-psycopg2==2.9.2
 psycopg2-binary==2.9.2
 sqlparse==0.4.1
 termcolor==1.1.0

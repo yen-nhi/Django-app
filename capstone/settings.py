@@ -152,6 +152,3 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 
 
-import django_heroku
-
-django_heroku.settings(locals())
