@@ -151,4 +151,4 @@ STATIC_ROOT = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'media/'
 
-
+SECRET_KEY = os.getenv('SECRET_KEY')
