@@ -1,3 +1,12 @@
+a {
+    text-decoration: none;
+    color: dimgrey;
+}
+
+a:hover{
+    color: black;
+}
+
 #nav-bar{
     padding: 10px;
     background-image: linear-gradient(to right, rgb(150, 255, 238) , rgb(240, 175, 222), skyblue);

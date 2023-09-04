@@ -44,8 +44,8 @@ def register(request):
 
         # Ensure password matches confirmation
         password = request.POST["password"]
-        confirmation = request.POST["confirmation"]
-        if password != confirmation:
+        confirm_password = request.POST["confirm_password"]
+        if password != confirm_password:
             return render(request, "register.html", {
                 "message": "Passwords must match."
             })
@@ -54,8 +54,8 @@ def register(request):
         try:
             user = User.objects.create_user(username, email, password)
             user.save()
-            following_posts = Following_posts(user=user)
-            following_posts.save()
+            # following_posts = Following_posts(user=user)
+            # following_posts.save()
         except IntegrityError:
             return render(request, "register.html", {
                 "message": "Username already taken."

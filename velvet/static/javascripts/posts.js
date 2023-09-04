@@ -29,15 +29,10 @@ function build_post(post){
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `<div class="card-body">
-                        <h5 class="card-title">${post.title}</h5>
+                        <h5 class="card-title"><a href="/post/${post.id}">${post.title}</a></h5>
                         <p class="card-text" class="bottom"><small>${post.time}</small></p>
                       </div>`;
     document.querySelector('#posts').append(card);
-
-    /// Click card to go to the clicked post's page
-    card.onclick = () => {
-        window.location = `/post/${post.id}`;
-    };
 }
 
 function build_article(post){
@@ -49,16 +44,11 @@ function build_article(post){
     </div>
     <div class="col-md-10">
       <div class="card-body">
-        <h5 class="card-title">${ post.title }</h5>
+        <h5 class="card-title"><a href="/post/${post.id}">${ post.title }</a></h5>
         <p class="card-text">${ post.username }</p>
         <p class="card-text" class="bottom"><small>Updated ${ post.time }</small></p>
       </div>
     </div>
   </div>`;
   document.querySelector('#articles').append(card);
-  
-  /// Click card to go to the clicked post's page
-  card.onclick = () => {
-    window.location = `/post/${post.id}`;
-  };
 }
