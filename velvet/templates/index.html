@@ -3,54 +3,92 @@
 
 {% block title %}Home{% endblock %}
 {% block script %}
-<script src="{% static 'javascripts/index.js' %}"></script>
+    <script src="{% static 'javascripts/index.js' %}"></script>
 {% endblock %}
 
 {% block body %}
-<div id="banner">
-    <img src="{% static 'images/1.png' %}" alt="" id="banner-image">
-</div>
-<div class="content" id="posts">
-    <h4>Importants</h4><br>
-{% for post in posts %}
-
-<div class="card" data-post="{{ post.id }}">
-
-      <div class="card-body">
-        <h5 class="card-title"><a href="{% url 'view_post' post_id=post.id %}">{{post.title}}</a></h5>
-        <p class="card-text" class="bottom"><small>{{post.time}}</small></p>
-      </div>
-
-</div>
-
-{% endfor %}
-  <a href="{% url 'view_posts' _type='important' %}" class="see-more">>> See more</a>
-</div>
-
-<div class="content" id="articles">
-  <h4>Topics</h4><br>
-  {% if user.is_authenticated %}
-    <a href="{% url 'write_post' %}" class="btn btn-info" id="post-button">Write your story</a>
-  {% else %}
-    <a href="{% url 'login' %}" class="btn btn-info" id="post-button">Write your story</a>
-  {% endif %}
-
-{% for article in articles %}
-<div class="card mb-2" data-post="{{ article.id }}">
-  <div class="row g-0">
-    <div class="col-md-2">
-        <img src="{{article.head_image.url}}" alt="..." width="100%">
+    <div id="banner">
+        <img src="{% static 'images/1.png' %}" alt="" id="banner-image">
     </div>
-    <div class="col-md-10">
-      <div class="card-body">
-          <h5 class="card-title"><a href="{% url 'view_post' post_id=article.id %}">{{ article.title }}</a></h5>
-        <p class="card-text">{{ article.user.username }}</p>
-        <p class="card-text" class="bottom"><small>Updated {{ article.time }}</small></p>
-      </div>
+    <div class="content" id="posts">
+        <h4>Importants</h4><br>
+        {% for post in posts %}
+
+            <div class="card" data-post="{{ post.id }}">
+
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'view_post' post_id=post.id %}">{{ post.title }}</a></h5>
+                    <p class="card-text" class="bottom"><small>{{ post.time }}</small></p>
+                </div>
+
+            </div>
+
+        {% endfor %}
+        <br>
+        <div class="text-end">
+            <a class="btn btn-info text-light" href="{% url 'view_posts' _type='important' %}">Check more news</a>
+        </div>
+
     </div>
-  </div>
-</div>
-{% endfor %}
-  <a href="{% url 'view_posts' _type='normal' %}" class="see-more">>> See more</a>
-</div>
+
+    <div class="content" id="articles">
+        <h4>Our customers' stories</h4><br>
+        <div class="text-end">
+            {% if user.is_authenticated %}
+                <button type="button" class="btn btn-info text-light" data-bs-toggle="modal"
+                        data-bs-target="#write-post">
+                    Write your story
+                </button>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-info text-light">Write your story</a>
+            {% endif %}
+        </div>
+        <br>
+        <div class="row row-cols-md-4 ">
+
+            {% for article in articles %}
+                <div class="col">
+                    <div class="card" style="width: 16rem;">
+                        <div class="card-body">
+                            <a href="{% url 'view_post' post_id=article.id %}">
+                                <h5><img class="avatar" src="{{ article.user.avatar.url }}" width="30"
+                                         alt="..."> {{ article.user.username }}</h5>
+                                <p class="story-truncate">{{ article.body|safe|truncatechars:100 }}</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            {% endfor %}
+        </div>
+        <br>
+        <div class="text-end">
+            <a class="btn btn-info text-light" href="{% url 'view_posts' _type='normal' %}">Read more</a>
+        </div>
+    </div>
+
+
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="write-post" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="modal-body">
+                         <textarea class="form-control" placeholder="Write your inspiring story about your animal firends."
+                              rows="10"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-info text-light" type="submit">Send</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

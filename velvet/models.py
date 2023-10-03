@@ -13,23 +13,20 @@ class Article(models.Model):
     user = models.ForeignKey("User", on_delete=models.CASCADE, related_name='post_user')
     head_image = models.ImageField(blank=True, upload_to="media/head_images")
     title = models.CharField(max_length=150)
-    body = RichTextUploadingField(config_name='editor',blank=True, null=True)
+    body = RichTextUploadingField(config_name='editor', blank=False, null=False)
     time = models.DateTimeField(auto_now_add=True)
     important = models.BooleanField(default=False)
     approved = models.BooleanField(default=False)
     def serialize(self):
-        if self.head_image:
-            image = self.head_image.url
-        else:
-            image = None
         return {
-            'id':self.id,
+            'id': self.id,
             'user': self.user.id,
             'username': self.user.username,
-            'head_image': image,
+            'avatar': self.user.avatar.url,
             'title': self.title,
             'time': self.time.strftime("%m/%d/%Y"),
             'important': self.important,
+            'body': self.body
         }
 
 class Comment(models.Model):

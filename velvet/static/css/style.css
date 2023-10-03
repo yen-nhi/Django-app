@@ -43,12 +43,14 @@ small{
     border: turquoise solid 1px;
     height: 100px;
 }
+
 #articles .card{
     color: grey;
-    height: 200px;
+    background-color: lightpink;
+    box-shadow: dimgrey 2px 2px 4px 0px;
 }
 #articles img{
-    height: 195px;
+    width: 60px;
     overflow: hidden;
 }
 .bottom{
@@ -112,12 +114,12 @@ small{
 }
 #banner-shop{
     width: 100%;
-    height: 300px;
+    height: 400px;
     overflow: hidden;
 }
 #banner-shop img{
     width: 100%;
-    margin: -20% 0% 0% 0%;
+    margin: -15% 0% 0% 0%;
 }
 #slogan{
     position: absolute;
@@ -195,9 +197,9 @@ small{
     width: 23%;
     height: 550px;
     font-weight: bold;
-    color: gray;
+    color: grey;
     text-align: center;
-    border: gray solid 0.5px;
+    border: grey solid 0.5px;
     margin: 10px;
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
 }
@@ -225,6 +227,7 @@ small{
 .inner-body-shop{
     padding: 30px;
     padding-top: 10px;
+    position: relative;
 }
 .inner-body-shop .nav{
     margin-left: 5%;
@@ -267,15 +270,10 @@ small{
 #write_post{
     padding: 50px;
 }
-#post-button{
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    color: white;
-}
+
 .head-image{
     width: 100%;
-    height: 400px;
+    height: 450px;
     overflow: hidden;
 }
 .head-image img{
@@ -383,6 +381,7 @@ small{
     padding: 20px;
     margin-left: 10px;
 }
+
 .review-btn{
     padding: 5px !important;
     width: fit-content !important;
@@ -427,6 +426,25 @@ footer{
     background-image: linear-gradient(to left, rgb(150, 255, 238) , rgb(240, 175, 222), skyblue);
 }
 
+.avatar {
+    border-radius: 50% !important;
+    margin-right: 10px;
+}
+
+#articles .post {
+    border-radius: 20px;
+    border: solid 1px lightpink;
+    margin-top: 20px;
+}
+
+.post-body {
+    padding-left: 30px;
+}
+
+.posts-head {
+    color: lightpink;
+    padding-bottom: 20px;
+}
 
 @media screen and (max-width: 1200px){
     #banner{

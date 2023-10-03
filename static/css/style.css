@@ -1,3 +1,12 @@
+a {
+    text-decoration: none;
+    color: dimgrey;
+}
+
+a:hover{
+    color: black;
+}
+
 #nav-bar{
     padding: 10px;
     background-image: linear-gradient(to right, rgb(150, 255, 238) , rgb(240, 175, 222), skyblue);
@@ -13,16 +22,49 @@
     right:20px;
 }
 
+
+small{
+    color: grey;
+}
+
 .content{
     padding: 50px;
     position: relative;
 }
 .content .card{
+    position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 .content h2{
     text-align: center;
+}
+#posts .card{
+    border: turquoise solid 1px;
+    height: 100px;
+}
+
+#articles .card{
+    color: grey;
+    background-color: lightpink;
+    /*box-shadow: dimgrey 2px 2px 0px 0px;*/
+}
+#articles img{
+    width: 60px;
+    overflow: hidden;
+}
+.bottom{
+    position: absolute !important;
+    bottom: 10px !important;
+}
+
+#comments{
+    padding: 30px;
+}
+#comments li{
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(29, 29, 29, 0.2);
 }
 
 #login-box{
@@ -34,6 +76,7 @@
     opacity: 0.8;
     border-radius: 10px;
     padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .form-group{
     margin: 30px;   
@@ -55,12 +98,13 @@
     padding: 20px;
     text-align: center;
     border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 #banner{
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 600px;
     overflow: hidden;
 }
 #banner-image{
@@ -79,7 +123,7 @@
 }
 #slogan{
     position: absolute;
-    bottom: 0;
+    bottom: 50px;
     left: 30px;
     color: whitesmoke;
     padding: 20px;
@@ -87,6 +131,18 @@
     border-bottom: turquoise solid 5px;
     background-color: rgba(255, 255, 255, 0.2);
     border-top-right-radius: 30px   ;
+}
+#search-btn{
+    background-color: white;
+    border: none;   
+}
+#search-bar{
+    outline: none;
+    padding: 5px;
+    border: turquoise solid 1px;
+}
+#search-bar:focus{
+    border: darkturquoise solid 2px;
 }
 
 #add-cart-alert{
@@ -101,12 +157,22 @@
 .product{
     width: 100%;
     background-color: mintcream;
+
 }
 #add-cart-btn{
     border: turquoise solid 5px;
     border-radius: 20px;
     width: 150px;
-    margin-right: 10px;
+    background-color: white;
+    color: turquoise;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+    margin-right: 15px;
+}
+#add-cart-btn:hover{
+    border: turquoise solid 5px;
+    background-color: turquoise;
+    color: white;
+
 }
 #reviews .list-group-item{
     margin: 10px;
@@ -124,24 +190,33 @@
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
+    margin-top: 30px;
 }
 .item{
+    position: relative;
     width: 23%;
-    height: 500px;
+    height: 550px;
     font-weight: bold;
-    color: gray;
+    color: grey;
     text-align: center;
-    border: gray solid 0.5px;
+    border: grey solid 0.5px;
     margin: 10px;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
 }
 .item .photo{
-   height: 300px;
+   height: 350px;
    overflow: hidden;
 }
 .item img{
     width: 100%;
 }
 .item button{
+    display: block;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    position: absolute;
+    bottom: 10px;
     border: turquoise solid 5px;
     border-radius: 20px;
 }
@@ -194,15 +269,10 @@
 #write_post{
     padding: 50px;
 }
-#post-button{
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    color: white;
-}
+
 .head-image{
     width: 100%;
-    height: 400px;
+    height: 450px;
     overflow: hidden;
 }
 .head-image img{
@@ -245,9 +315,6 @@
 #social{
     display: flex;
     justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-color: lightgray;
 }
 .social{
     margin-left: 50px;
@@ -313,6 +380,7 @@
     padding: 20px;
     margin-left: 10px;
 }
+
 .review-btn{
     padding: 5px !important;
     width: fit-content !important;
@@ -322,13 +390,17 @@ td{
     vertical-align: middle;
 }
 
-#cart-element button:not(.btn-proceed){
+#cart-element button:not(.btn-proceed), .update-cart{
     padding: 0px;
     border: turquoise solid 0.5px;
     border-radius: 10px;
     margin: -2px;    
 }
-
+.btn-proceed:hover{
+    background-color: skyblue !important;
+    color: mintcream !important;
+    border: none !important;
+}
 #orders-element #order{
     background-color: mintcream;
 }
@@ -339,4 +411,129 @@ td{
 #reviews{
     margin-left: 60px;
     margin-right: 30px;
+}
+#body{
+    min-height: 90vh;
+    height: 100%;
+ }
+
+footer{
+    clear: both;
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    background-image: linear-gradient(to left, rgb(150, 255, 238) , rgb(240, 175, 222), skyblue);
+}
+
+.avatar {
+    border-radius: 50% !important;
+    margin-right: 10px;
+}
+
+.post {
+    border-radius: 20%;
+    border: lightpink 1px;
+}
+
+@media screen and (max-width: 1200px){
+    #banner{
+        height: fit-content;
+    }
+    #slogan{
+        bottom: 10px;
+    }
+}
+@media screen and (max-width: 1100px){
+    #categories{
+        border: none;
+    }
+    #search{
+        position: absolute;
+        right: 0;
+    }
+    .item{
+        width: 30%;
+    }
+    .item .photo{
+        height: 300px;
+    }
+}
+@media screen and (max-width: 770px) {
+    #booking{
+        padding: 20px;
+    }
+    #booking form{
+        padding: 20px;
+    }
+    #date-row{
+        margin: auto;
+        margin-bottom: 50px;
+    }
+    .item img{
+        height: 100%;
+    }
+    .item p{
+        font-weight: normal;
+        margin-bottom: 2px !important;
+    }
+    .item{
+        width: 30%;
+        height: 350px;
+        font-size: 14px;
+    }
+    .item .photo{
+        height: 150px;
+        overflow: hidden;
+    }
+    .item button{
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    #posts .card, #articles .card{
+        height: fit-content;
+    }
+    .card-title{
+        font-size: 14px;
+    }
+    p{
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 700px) {
+    .item{
+        width: 44%;
+        height: 400px;
+    }
+    .item .photo{
+        height: 200px;
+    }
+    .social{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media screen and (max-width: 480px){
+    #slogan{
+        font-size: 16px !important;
+    }
+    .item{
+        width: 44%;
+        height: 300px;
+        font-size: 14px;
+    }
+    .item .photo{
+        height: 130px;
+    }
+    
+}
+@media screen and (max-width: 434px){
+    .item{
+        width: 90%;
+        height: 400px;
+        font-size: 14px;
+    }
+    .item .photo{
+        height: 200px;
+    }
 }

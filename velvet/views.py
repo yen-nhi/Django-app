@@ -69,15 +69,24 @@ def register(request):
 def index(request):
     user = request.user
     cart_count = 0
+    form = Post_Form(request.POST, request.FILES)
     if user.is_authenticated:
         cart_count = Cart_item.objects.filter(user=request.user).count()
-    posts = Article.objects.filter(important=True).order_by('-time')[0:3]
-    articles = Article.objects.filter(important=False, approved=True).order_by('-time')[0:3]
+        if request.method == 'POST':
+            if form.is_valid():
+                f = form.save(commit=False)
+                f.user = request.user
+                f.save()
+                return HttpResponseRedirect(reverse('index'))
+    posts = Article.objects.filter(important=True).order_by('-id')[0:3]
+    articles = Article.objects.filter(important=False, approved=True).order_by('-id')[0:4]
+
     return render(request, 'index.html', {
         'user': request.user,
         'cart_count': cart_count,
         'posts': posts,
-        'articles': articles
+        'articles': articles,
+        'form': form
     })
 
 def find_vet(request):
@@ -100,19 +109,19 @@ def view_item(request, item_id):
         'images': images
     })
 
-def write_post(request):
-    form = Post_Form(request.POST, request.FILES)
-    if request.user.is_authenticated:
-        if request.method == 'POST':
-            if form.is_valid():
-                f = form.save(commit=False)
-                f.user = request.user
-                f.save()
-                return HttpResponseRedirect(reverse('index'))
-    
-    return render(request, 'write_post.html', {
-        'form': form,
-    })
+# def write_post(request):
+#     form = Post_Form(request.POST, request.FILES)
+#     if request.user.is_authenticated:
+#         if request.method == 'POST':
+#             if form.is_valid():
+#                 f = form.save(commit=False)
+#                 f.user = request.user
+#                 f.save()
+#                 return HttpResponseRedirect(reverse('index'))
+#
+#     return render(request, 'write_post.html', {
+#         'form': form,
+#     })
 
 def view_post(request, post_id):
     post = Article.objects.get(pk=post_id)
@@ -211,9 +220,9 @@ def load_posts(request, _type):
     start = int(request.GET.get('start') or 0)
     end = int(request.GET.get('end') or start + 9)
     if _type == 'important':
-        posts = Article.objects.filter(important=True).order_by('-time')[start:end+1]
+        posts = Article.objects.filter(important=True).order_by('-id')[start:end+1]
     else:
-        posts = Article.objects.filter(important=False, approved=True).order_by('-time')[start:end+1]
+        posts = Article.objects.filter(important=False, approved=True).order_by('-id')[start:end+1]
     return JsonResponse([post.serialize() for post in posts], safe=False)
 
 def load_districts(request, city_id):

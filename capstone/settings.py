@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = json.loads(os.getenv('ALLOWED_HOSTS', '["18.140.128.135", "127.0.0.1"]'))
 
@@ -146,10 +146,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = 'static/'
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
+#STATIC_ROOT = 'static/'
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'velvet/static/'),)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = 'NHI'
+

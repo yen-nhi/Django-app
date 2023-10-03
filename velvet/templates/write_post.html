@@ -7,8 +7,10 @@
 <div id="write_post">
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.media }}
-        {{ form.as_p }}
+        <form method="POST">
+            <textarea placeholder="Write your inspiring story about your animal firends." rows="10"></textarea>
+            <button type="submit"></button>
+        </form>
         <input type=submit class="btn btn-info" value="Submit">
     </form>
 </div>

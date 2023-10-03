@@ -5,12 +5,7 @@ from django.forms import ModelForm, TextInput, Textarea, FileInput, Select
 class Post_Form(ModelForm):
     class Meta:
         model = Article
-        exclude = ['user', 'time', 'important']
-        widgets = {
-            'title': TextInput(attrs={'class': 'form-control', 'id': 'title' }),
-            'body': Textarea(attrs={'id': 'editor' }),
-            'head_image': FileInput(attrs={'class': 'form-control'})
-        }
+        fields = ['body']
 
 class Service_Booking(ModelForm):
     class Meta:

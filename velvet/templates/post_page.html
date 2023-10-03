@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% block body %}
-{% if post.head_image %}
+{% if not post.important %}
 <div class="head-image">
-    <img src="{{ post.head_image.url }}" alt="" width="100%">
+    <img src="{% static 'images/post_head.png' %}" alt="" width="100%">
 </div>
 {% endif %}
 

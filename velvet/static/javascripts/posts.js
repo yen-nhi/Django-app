@@ -29,7 +29,7 @@ function build_post(post){
     const card = document.createElement('div');
     card.className = 'card';
     card.innerHTML = `<div class="card-body">
-                        <h5 class="card-title"><a href="/post/${post.id}">${post.title}</a></h5>
+                        <h5 class="card-title"><a href="/post/${post.id}">${post.username}</a></h5>
                         <p class="card-text" class="bottom"><small>${post.time}</small></p>
                       </div>`;
     document.querySelector('#posts').append(card);
@@ -37,18 +37,13 @@ function build_post(post){
 
 function build_article(post){
     const card = document.createElement('div');
-    card.className = 'card mb-2';
-    card.innerHTML = `<div class="row g-0">
-    <div class="col-md-2">
-      <img src="${post.head_image}" alt="..." width="100%">
-    </div>
-    <div class="col-md-10">
-      <div class="card-body">
-        <h5 class="card-title"><a href="/post/${post.id}">${ post.title }</a></h5>
-        <p class="card-text">${ post.username }</p>
-        <p class="card-text" class="bottom"><small>Updated ${ post.time }</small></p>
-      </div>
-    </div>
-  </div>`;
+    card.className = 'post';
+    card.innerHTML = `<a href="/post/${post.id}">
+    <div style="padding: 20px">
+      <span><img class="avatar" src="${post.avatar}" alt="..." width="100%"><span
+      <span style="font-weight: bold">${ post.username }</span>
+    </div >
+      <div class="post-body">${ post.body.slice(0,200) }...</div>
+  </a>`;
   document.querySelector('#articles').append(card);
 }
