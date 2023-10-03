@@ -204,7 +204,7 @@ small{
     box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
 }
 .item .photo{
-   height: 350px;
+   height: 300px;
    overflow: hidden;
 }
 .item img{
