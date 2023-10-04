@@ -159,21 +159,7 @@ small{
     background-color: mintcream;
 
 }
-#add-cart-btn{
-    border: turquoise solid 5px;
-    border-radius: 20px;
-    width: 150px;
-    background-color: white;
-    color: turquoise;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
-    margin-right: 15px;
-}
-#add-cart-btn:hover{
-    border: turquoise solid 5px;
-    background-color: turquoise;
-    color: white;
 
-}
 #reviews .list-group-item{
     margin: 10px;
     border-top-right-radius: 20px;
@@ -195,8 +181,7 @@ small{
 .item{
     position: relative;
     width: 23%;
-    height: 550px;
-    font-weight: bold;
+    height: 500px;
     color: grey;
     text-align: center;
     border: grey solid 0.5px;
@@ -210,14 +195,20 @@ small{
 .item img{
     width: 100%;
 }
+.item p{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 0 !important;
+    font-weight: bold;
+}
 .item button{
     display: block;
     width: 60%;
     margin-left: 20%;
     margin-right: 20%;
     position: absolute;
-    bottom: 10px;
-    border: turquoise solid 5px;
+    bottom: 15px;
+    border: turquoise solid 1px;
     border-radius: 20px;
 }
 .price-tag{
@@ -352,11 +343,13 @@ small{
     margin-left: auto;
     margin-right: auto;
 }
-#profile-div #up_pic{
-    text-align: center;
+#up_pic{
     color: darkturquoise;
-    text-decoration: underline;
 }
+#up_pic:hover{
+    cursor: pointer;
+}
+
 #profile-div .col-md-3{
     background-color:mintcream;
     height: 100vh;
@@ -365,6 +358,12 @@ small{
     display: flex;
     flex-wrap: wrap;
 }
+
+button:hover{
+    background-color: #e9cfff !important;
+    border-color: #e9cfff !important;
+}
+
 #profile-div button{
     width: 19.5%;
     border: turquoise solid 2px;
@@ -395,13 +394,9 @@ td{
     padding: 0px;
     border: turquoise solid 0.5px;
     border-radius: 10px;
-    margin: -2px;    
+    margin: -2px;
 }
-.btn-proceed:hover{
-    background-color: skyblue !important;
-    color: mintcream !important;
-    border: none !important;
-}
+
 #orders-element #order{
     background-color: mintcream;
 }
@@ -466,7 +461,7 @@ footer{
         width: 30%;
     }
     .item .photo{
-        height: 300px;
+        height: 270px;
     }
 }
 @media screen and (max-width: 770px) {
@@ -485,11 +480,10 @@ footer{
     }
     .item p{
         font-weight: normal;
-        margin-bottom: 2px !important;
     }
     .item{
         width: 30%;
-        height: 350px;
+        height: 300px;
         font-size: 14px;
     }
     .item .photo{
@@ -524,17 +518,17 @@ footer{
         margin-right: auto;
     }
 }
-@media screen and (max-width: 480px){
+@media screen and (max-width: 520px){
     #slogan{
         font-size: 16px !important;
     }
     .item{
-        width: 44%;
-        height: 300px;
+        width: 80%;
+        height: 400px;
         font-size: 14px;
     }
     .item .photo{
-        height: 130px;
+        height: 250px;
     }
     
 }

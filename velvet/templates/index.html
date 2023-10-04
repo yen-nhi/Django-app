@@ -26,7 +26,9 @@
         {% endfor %}
         <br>
         <div class="text-end">
-            <a class="btn btn-info text-light" href="{% url 'view_posts' _type='important' %}">Check more news</a>
+            <button class="btn btn-info text-light">
+            <a href="{% url 'view_posts' _type='important' %}">Check more news</a>
+            </button>
         </div>
 
     </div>
@@ -40,7 +42,9 @@
                     Write your story
                 </button>
             {% else %}
-                <a href="{% url 'login' %}" class="btn btn-info text-light">Write your story</a>
+                <button class="btn btn-info text-light">
+                    <a href="{% url 'login' %}">Write your story</a>
+                </button>
             {% endif %}
         </div>
         <br>
@@ -61,7 +65,9 @@
         </div>
         <br>
         <div class="text-end">
-            <a class="btn btn-info text-light" href="{% url 'view_posts' _type='normal' %}">Read more</a>
+            <button class="btn btn-info text-light">
+            <a href="{% url 'view_posts' _type='normal' %}">Read more</a>
+            </button>
         </div>
     </div>
 

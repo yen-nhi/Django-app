@@ -18,9 +18,8 @@
                 <p class="card-text"><strong>Joined date: </strong>{{ profile_user.date_joined | date:"M d, Y" }}</p>
                 <p class="card-text"><strong>Phone: </strong> {{ profile_user.phone }}</p>
                 <p class="card-text"><strong>Address: </strong> {{ profile_user.address }}</p>
-                <a id="up_pic" data-bs-toggle="modal" data-bs-target="#up_profile-pic">
-                  Edit your profile
-                </a>
+                <a id="up_pic" data-bs-toggle="modal" data-bs-target="#up_profile-pic">Edit your profile</a>
+
             </div>
           </div>
 
@@ -35,25 +34,26 @@
               </div>
               <br><br>
 
-              <div id="cart-element" class="profile-element">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Item</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Unit price</th>
-                      <th scope="col">Price</th>
-                    </tr>
-                  </thead>
-                  <tbody id="cart-list"></tbody>
-                </table><br>
-                <div style="text-align: right; margin-right: 50px;">
-                  <strong>Bill total:  $ <span id="cart-total"></span></strong>
-                </div>
-
-                <div style="position: fixed; bottom: 20px; padding: 10px; width: 74%;">
-                  <button class="btn-proceed" style="width: 98%; background-color: mintcream; font-size: large; font-weight: bold;">Proceed Order</button>
+                <div id="cart-element" class="profile-element">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Unit price</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                        </thead>
+                        <tbody id="cart-list"></tbody>
+                    </table>
+                    <br>
+                    <div style="text-align: right; margin-right: 50px;">
+                        <strong>Bill total: $ <span id="cart-total" style="font-size: x-large; color: purple"></span></strong>
+                    </div>
+                    <br>
+                    <div>
+                  <button class="btn-proceed" style="width: 100%; background-color: mintcream; font-size: large; font-weight: bold;">Proceed Order</button>
                 </div>
               </div>
             

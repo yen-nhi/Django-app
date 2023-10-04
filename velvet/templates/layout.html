@@ -12,7 +12,7 @@
             integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
             crossorigin="anonymous"></script>
     <script>var user_id = "{{ request.user.id }}" </script>
-    {#        <script src="{% static 'javascripts/layout.js' %}"></script>#}
+            <script src="{% static 'javascripts/layout.js' %}"></script>
     {% block script %}{% endblock %}
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,7 @@
                         <img src="{% static 'images/menu.svg' %}" alt="logo" width="25px">
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1"
-                        style="background-color: turquoise;">
+                        style="background-color: #e9cfff;">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">Home</a>
                         </li>

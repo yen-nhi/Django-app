@@ -109,7 +109,7 @@ function build_card(item){
     const price = document.createElement('p');
     price.innerHTML = `$ ${item.price}`;
     price.style.color = "darkturquoise";
-    const score = document.createElement('p');
+    const score = document.createElement('small');
     score.innerHTML = `Score: ${item.average_score}/10`;
     const button = document.createElement('button');
     button.className = 'btn';
